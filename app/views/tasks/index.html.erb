@@ -1,9 +1,27 @@
 <h1>タスク一覧</h1>
 
-<ul>
-    <% @tasks.each do |task| %>
-     <li><%= link_to task.id, task%> :<%= task.content %> &gt; <%= task.status %></li>
-    <% end %>
-</ul>
+<% if @tasks.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>タスク</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |message| %>
+        <tr>
+          <td><%= link_to message.id, message %></td>
+          <td><%= message.content %></td>
+          <td><%= message.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @tasks %>
+  </div>
+<% end %>
 
-<%= link_to 'タスク・ステータスの投稿', new_task_path %>
+    <%= link_to 'タスクの作成', new_task_path, class: "btn btn-primary" %>
