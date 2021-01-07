@@ -10,11 +10,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @tasks.each do |message| %>
+      <% @tasks.each do |task| %>
         <tr>
-          <td><%= link_to message.id, message %></td>
-          <td><%= message.content %></td>
-          <td><%= message.status %></td>
+          <td><%= link_to task.id, task %></td>
+          <td><%= task.content %></td>
+          <td><%= task.status %></td>
         </tr>
       <% end %>
     </tbody>
